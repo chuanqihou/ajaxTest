@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>productList</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript" src="../js/axios.js"></script>
+    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="js/slides.min.jquery.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //colorPopupCreate();
+            $("#brandopen").click(function() {
+                $("#brandMini").hide();
+                $("#brandMore").show();
+                $("#brandclose").show();
+                $("#brandopen").hide();
+                return false;
+            });
+            $("#brandclose").click(function() {
+                $("#brandMore").hide();
+                $("#brandMini").show();
+                $("#brandclose").hide();
+                $("#brandopen").show();
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div id="appcqh">
+<div class="header">
+    <div class="minwidth">
+        <div style="width:1200px;overflow: hidden;margin:5px auto;">
+            <dl class="login">
+                <div class="top_left">
+                    <dd><a href="#"><img src="images/header_top_1.jpg" alt=""/> 收藏本站</a></dd>
+                    <dd>Hi！欢迎来到必购商城</dd>
+                    <!--<dd style="float:left;margin-right:740px;"><a href="#">页面风格：</a>-->
+                    <!--<a href="javascript:changepagestyle('')"><img src="images/page_style_1.png" width="10" height="10"/></a>-->
+                    <!--<a href="javascript:changepagestyle(1)"><img src="images/page_style_2.png" width="10" height="10"/></a>-->
+                    <!--</dd>-->
+                    <dd><a href="#">[登录]</a></dd>
+                    <dd><a href="#">[注册]</a></dd>
+                </div>
+                <div class="top_right">
+                    <!--<dd><a href="#">[消息中心]</a></dd>-->
+                    <dd><a href="#" ><img src="images/header_top_2.jpg" alt=""/>购物车</a></dd>
+                    <dd><a href="402-00买家中心首页.html" target="_blank"><img src="images/header_top_3.jpg" alt=""/>会员中心</a></dd>
+                    <dd><a href="#"><img src="images/header_top_4.jpg" alt=""/>帮助中心</a></dd>
+                    <dd><a href="#"><img src="images/header_top_5.jpg" alt=""/>网站地图</a></dd>
+                </div>
+            </dl>
+        </div>
+        <div class="clear"></div>
+
+<!--        <div class="topadv">
+            <div style="width: 1200px;margin: 0 auto;">
+                <img src="./images/header_bgad.png" alt="" class="header_img">
+            </div>
+        </div>-->
+
+        <div class="login_d" style="width:1200px; margin:0 auto;overflow: hidden;padding:10px 0">
+            <a href="101首页.html">
+                <div class="logo"></div>
+            </a>
+            <div class="search">
+                <div class="search-triggers">
+                    <ul class="switchable-nav" id="sear_ch">
+                        <li class="J_SearchTab goods-search-tab selected" onClick="seachTag('seach_tag1')" id="seach_tag1">商品</li>
+                        <li class="J_SearchTab tmall-search-tab"onClick="seachTag('seach_tag2')" id="seach_tag2">店铺</li>
+                        <li class="J_SearchTab shop-search-tab" onClick="seachTag('seach_tag3')" id="seach_tag3">样品</li>
+                    </ul>
+                    <div class="search-tab-icon"><i><em></em><span></span></i></div>
+                </div>
+                <div class="i-search ld">
+                    <ul id="shelper" class="hide"></ul>
+                    <div class="form">
+                        <input type="text" class="text" accesskey="s" id="key" autocomplete="off"
+                               onkeydown="javascript:if(event.keyCode==13) search('key');">
+                        <input type="button" value="搜索" class="button" onclick="search('key');return false;">
+                    </div>
+                    <div class="advanced_search"><a href="#">高级搜索</a></div>
+                </div>
+                <div class="hotwords"><strong>热门搜索：</strong><a href="#" target="_blank" style="color:#ff0000">新年盛典</a><a
+                        href="#" target="_blank">圣诞活动</a><a href="#" target="_blank">家电满减</a><a href="#" target="_blank">车品满减</a>
+                </div>
+            </div>
+            <div class="tab">
+                <div>
+                    <img src="images/index/make.png" alt="" class="make_img"/></div>
+                <!--<div class="nav-mycart">-->
+                <!--<div><a href="#"><img src="images/mycart.jpg" alt=""/><span>我的购物车(<b>1</b>)</span></a></div>-->
+                <!--</div>-->
+            </div>
+        </div>
+<!--        <script type=text/javascript>
+            function seachTag(seach_tag) {
+                // 操作标签
+                var tag = document.getElementById("sear_ch").getElementsByTagName("li");
+                var taglength = tag.length;
+                for (var i = 0; i < taglength; i++) {
+                    tag[i].className = "";
+                }
+                document.getElementById(seach_tag).className = "selected";
+            }
+        </script>-->
+    </div>
+    <div class="nav-menu minwidth">
+        <div class="nav-menu_1">
+            <ul>
+                <li style="width: 215px"><a a href="#">全部商品分类﹀</a></li>
+                <li><a href="101首页.html" class="act">首页</a></li>
+                <li><a href="#">批发馆</a></li>
+                <li><a href="#">供爆款</a></li>
+                <li><a href="#">品牌汇</a></li>
+                <li><a href="#">新资讯</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+<div class="box">
+<div class="hr_20"></div>
+    <!--<img src="images/list/customers_gd.png" alt=""/>-->
+<div class="hr_20"></div>
+<div class="box_r_t" style="width: 955px">
+    <div class="hr_10"></div>
+    <div class="tuan_seacher">
+        <ul>
+            <li class="act" ><a href="javascript:void(0)" @click="selectRoot(0)">全部</a></li>
+            <li v-for="rootCate in rootCategory">
+                <a href="javascript:void(0)" @click="selectRoot(rootCate.id)">{{rootCate.categoryName}}</a>
+            </li>
+<!--            <li class="act"><a href="#">美食</a>215</li>
+            <li><a href="#">休闲娱乐</a>215</li>
+            <li><a href="#">电影</a>58</li>
+            <li><a href="#">生活服务</a>78</li>
+            <li><a href="#">摄影写真</a>89</li>
+            <li><a href="#">酒店</a>234</li>
+            <li><a href="#">旅游</a>123</li>
+            <li><a href="#">抽奖公益</a>2</li>
+            <li><a href="#">购物</a>234</li>-->
+        </ul>
+        <div class="hr_10"></div>
+        <div id="brandMini">
+            <ul style="margin-left: 10px" v-if="showCate">
+                <li ><a href="javascript:void(0)" @click="selectCate(category[0].rootCategoryId,0)">全部</a></li>
+                <!--<li ><a @click.prevent="selectCate(category[0].rootCategoryId,0)">全部</a></li>-->
+                <li v-for="cate in category">
+                    <a href="javascript:void(0)" @click="selectCate(cate.id,cate.rootCategoryId)">{{cate.categoryName}}</a>
+                </li>
+<!--                <li class="act"><a href="#">自助餐</a>215</li>
+                <li><a href="#">火锅</a>215</li>
+                <li><a href="#">烧烤</a>58</li>
+                <li><a href="#">烤鱼</a>78</li>
+                <li><a href="#">干锅/香锅</a>89</li>
+                <li><a href="#">西餐</a>234</li>
+                <li><a href="#">海鲜</a>123</li>
+                <li><a href="#">北京菜</a>2</li>
+                <li><a href="#">台湾菜</a>22</li>
+                <li><a href="#">福建菜</a>234</li>-->
+            </ul>
+            <div class="more-r right">
+                <a href="#" id="brandopen"><span class="btn_2">更多↓</span></a>
+            </div>
+        </div>
+        <div id="brandMore" style="display: none">
+            <ul style="margin-left: 10px">
+                <li ><a href="#">全部</a></li>
+                <li class="act"><a href="#">自助餐</a>215</li>
+                <li><a href="#">火锅</a>215</li>
+                <li><a href="#">烧烤</a>58</li>
+                <li><a href="#">烤鱼</a>78</li>
+                <li><a href="#">干锅/香锅</a>89</li>
+                <li><a href="#">西餐</a>234</li>
+                <li><a href="#">海鲜</a>123</li>
+                <li><a href="#">北京菜</a>2</li>
+                <li><a href="#">台湾菜</a>22</li>
+                <li><a href="#">福建菜</a>234</li>
+                <li><a href="#">烤鱼</a>78</li>
+                <li><a href="#">干锅/香锅</a>89</li>
+                <li><a href="#">西餐</a>234</li>
+                <li><a href="#">海鲜</a>123</li>
+                <li><a href="#">北京菜</a>2</li>
+                <li><a href="#">台湾菜</a>22</li>
+                <li><a href="#">福建菜</a>234</li>
+                <li><a href="#">西餐</a>234</li>
+                <li><a href="#">海鲜</a>123</li>
+                <li><a href="#">海鲜</a>123</li>
+                <li><a href="#">北京菜</a>2</li>
+                <li><a href="#">台湾菜</a>22</li>
+                <li><a href="#">福建菜</a>234</li>
+            </ul>
+            <div class="more-r right">
+                <a class="a_close" id="brandclose" href="#"><span class="btn_2">收起↑</span></a>
+            </div>
+        </div>
+        <div class="hr_20"></div>
+    </div>
+
+    <div class="hr_20"></div>
+    <div class="tuan_title" style="margin: 0px"><span class="txt">排序： </span><span class="btn_4"> <a href="#">综合排序 </a></span>
+        <span class="btn_2"><a href="#">价格  </a></span>
+        <span class="btn_2"> <a href="#">销量 </a></span><span class="btn_2"> <a href="#">新品 </a></span>
+        <span class="pages_t">所在地：
+            <select name="" id="" class="sec"><option>广东东莞市虎门</option></select>
+        </span>
+    </div>
+    <div class="hr_10"></div>
+    <div class="tuan_list">
+        <ul>
+            <li v-for="pro in pageProducts">
+                <div class="pic"><a :href="'./proDetail.html?proId='+pro.proId"><img :src="pro.proImg"/></a></div>
+                <div class="tx"><h4><a :href="'./proDetail.html?proId='+pro.proId">{{pro.proName}}</a></h4>
+                    {{pro.content}}
+                </div>
+                <div class="btn"><span class="price font_red">¥ {{pro.proPrice*0.85}}</span><span class="order">价值：<del>¥ {{pro.proPrice}}</del></span></div>
+                <div class="p_r"><span class="font_red"><b>63</b></span>人已购买</div>
+            </li>
+
+        </ul>
+        <div class="hr_20"></div>
+        <div class="page_css right">
+<!--            <span class="page_right">
+                <form method="get" action="#">
+                    <input name="p" type="text" class="text" value="1">
+                    <input type="submit" class="btn" value="GO">
+                </form>
+            </span>-->
+            <span class="page_left"> {{products.length}} 记录&nbsp;</span>
+            <a v-if="currentPage!=1" href="javaScript:void(0)" @click="page(currentPage-1)" >上一页</a></span>
+            <span v-for="index of pageTotal">
+                <a href="javaScript:void(0)" @click="page(index)" >{{index}}</a>
+            </span>
+<!--                <a href="#">2</a>
+            <a href="/admin/goods/?&amp;p=3">3</a>
+            <a href="#">4</a><a href="/admin/goods/?&amp;p=5">5</a>
+            <a href="#">6</a><a href="/admin/goods/?&amp;p=7">7</a>
+            <a href="#">... 9</a>-->
+            <a v-if="currentPage!=pageTotal" href="javaScript:void(0)" @click="page(currentPage+1)" >下一页</a></span>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="hr_20"></div>
+
+<div class="help">
+    <div class="wrapper">
+        <div class="helpinfo">
+            <ul>
+                <li>
+                    <dl class="li-1">
+                        <dt>新手指南</dt>
+                        <dd><a href="#" target="_blank">新人购物指南</a></dd>
+                        <dd><a href="#" target="_blank">商户服务平台</a></dd>
+                        <dd><a href="#" target="_blank">黄河交易规则</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="li-2">
+                        <dt>诚信保证计划</dt>
+                        <dd><a href="#" target="_blank">先行赔付</a></dd>
+                        <dd><a href="#" target="_blank">7天包退</a></dd>
+                        <dd><a href="#" target="_blank">诚保代充</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="li-3">
+                        <dt>支付方式</dt>
+                        <dd><a href="#" target="_blank">一点通支付</a></dd>
+                        <dd><a href="#" target="_blank">信用卡支付</a></dd>
+                        <dd><a href="#" target="_blank">借记卡支付</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="li-4">
+                        <dt>售后服务</dt>
+                        <dd><a href="#" target="_blank">联系客服</a></dd>
+                        <dd><a href="#" target="_blank">消费者维权中心</a></dd>
+                        <dd><a href="#" target="_blank">快捷支付</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--/*邮件订阅*/-->
+<div class="nav_d">
+    <div class="wrapper">
+        <div class="e-mial">
+            <img src="images/index/email.png" alt=""/>
+            <span>邮件订阅</span>
+            <input type="text" name="email"class="input_email"/>
+            <a href="#" style="margin: 0px 2px;"><img src="images/index/dingyue.png" alt=""/></a>
+            <a href="#" style="margin: 0px 2px;"><img src="images/index/tuiding.png" alt=""/></a>
+        </div>
+    </div>
+</div>
+<!--/*底部导航*/-->
+<div class="nav_d">
+    <div class="wrapper">
+        <a href="#">公司简介</a>|
+        <a href="#">合作意向</a>|
+        <a href="#">联系我们</a>|
+        <a href="#">招标信息</a>|
+        <a href="#">房地产</a>|
+        <a href="#">休闲农业</a>|
+        <a href="#">环保能源</a>
+    </div>
+</div>
+<div class="nav_d">
+    <div class="wrapper">
+        友情链接：
+        <a href="#">黄河在线电商</a>|
+        <a href="#">淘宝</a>|
+        <a href="#">京东</a>|
+        <a href="#">当当</a>|
+        <a href="#">亚马逊</a>|
+        <a href="#">腾讯</a>|
+        <a href="#">阿里巴巴</a>|
+        <a href="#">百度</a>|
+        <a href="#">人人网</a>
+    </div>
+</div>
+
+<!--/*版权信息*/-->
+<div class="hr_20"></div>
+<div class="footer">
+    <p>Copyright ©黄河在线商城. All Rights Reserved. 粤ICP证080047号</p>
+</div>
+<div style="text-align: center;margin: 5px auto 10px;">
+    <img src="images/copyright.png" alt="">
+</div>
+</div>
+
+
+<script>
+
+    var appcq = new Vue({
+        el:"#appcqh",
+        data:{
+            products:[],
+            pageProducts:[],
+            rootCategory:[],
+            category:[],
+            showCate:false,
+            pageSize:4,
+            pageTotal:1,
+            currentPage:1
+        },
+        methods:{
+            selectRoot(rootId){
+                if (rootId == "0") {
+                    this.showAllPros();
+                    this.showCate = false;
+                }else{
+                    axios.get("/ajax/showCategoryByRootId?rootId="+rootId).then(res=>{
+                        // console.log(res)
+                        this.category = res.data;
+                    }).catch(e=>{
+                        alert("数据加载失败，请联系管理员！")
+                    })
+                    this.getProByRootId(rootId);
+                    this.showCate = true;
+                }
+            },
+            selectCate(categoryId,rootId){
+
+                if (rootId == "0") {
+                    this.getProByRootId(categoryId);
+                }else{
+                    axios.get("/ajax/getProByRootAndCate?rootId="+rootId+"&categoryId="+categoryId).then(res=>{
+                        this.products = res.data;
+                        this.page(1)
+                    }).catch(e=>{
+                        alert("数据加载失败，请联系管理员！")
+                    });
+                }
+            },
+            showAllPros(){
+                axios.get("/ajax/showAllProducts").then(res=>{
+                    this.products = res.data;
+                    this.page(1)
+                }).catch(e=>{
+                    alert("数据加载失败，请联系管理员！")
+                })
+            },
+            getProByRootId(rootId){
+                axios.get("/ajax/getProByRootId?rootId="+rootId).then(res=>{
+                    console.log(res)
+                    this.products = res.data;
+                    this.page(1)
+                }).catch(e=>{
+                    alert("数据加载失败，请联系管理员！")
+                })
+                this.page(1)
+            },
+            page(pageNum){
+                var startIndex = (pageNum-1)*this.pageSize;
+                this.pageProducts = this.products.slice(startIndex,startIndex+4);
+                var total = this.products.length;
+                this.pageTotal = Math.ceil(total/this.pageSize);
+                this.currentPage = pageNum;
+            }
+        },
+        mounted() {
+            this.showAllPros();
+            axios.get("/ajax/showAllRootCategory").then(res=>{
+                this.rootCategory = res.data;
+            }).catch(e=>{
+                alert("数据加载失败，请联系管理员！")
+            })
+        }
+    })
+
+</script>
+
+<!--backtoTop1-->
+<!--兼容所有现代浏览器同时包括 ie6/7/8/9 （ie6会有一点点抖动）-->
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testAjax</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+</head>
+
+    <body>
+        <button id="btn">ajax</button>
+        <ul id="u">
+
+        </ul>
+    </body>
+
+    <script>
+
+        $(function(){
+            $("#btn").click(function(){
+                $.get("testAjax",function(data){
+                    console.log(data)
+/*                    for(var i = 0;i<data.length;i++){
+                        $("#u").append("<li>"+data[i].proName+"</li>")
+                    }*/
+                    for(var i of data){
+                        $("#u").append("<li>"+i.proName+"</li>")
+                    }
+                    // $("#u").append("<li>"+data+"</li>")
+                });
+            });
+
+        })
+
+    </script>
+
+</html>

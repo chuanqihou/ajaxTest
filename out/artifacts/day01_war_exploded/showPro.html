@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+    <!--<script src="js/jquery-3.6.4.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <script src="js/axios.js"></script>
+</head>
+    <body>
+    <div id="app">
+        <table border="1px">
+            <tr>
+                <th>商品编号</th>
+                <th>商品图片</th>
+                <th>商品名称</th>
+                <th>价格</th>
+                <th>描述</th>
+                <th>操作</th>
+            </tr>
+
+            <tr v-for="pro in products" >
+                <td>{{pro.proId}}</td>
+                <td><img width="100px" :src="pro.proImg" /></td>
+                <td>{{pro.proName}}</td>
+                <td>{{pro.proPrice}}</td>
+                <td>{{pro.content}}</td>
+                <td><button @click='delProById(pro.proId)' >删除</button></td>
+                <!--<td><a :href="'delPro?proId='+pro.proId" >删除</a></td>-->
+            </tr>
+
+        </table>
+    </div>
+
+    <script>
+
+        var app = new Vue({
+            el: "#app",
+            data:{
+                products:[]
+            },
+            methods:{
+                showAllPro(){
+                    axios.get("showAll").then(res=>{
+                        this.products = res.data;
+                    }).catch(e=>{
+                        alert("查询商品信息失败，请联系管理员！")
+                    })
+                },
+                delProById(id){
+                    axios.get("delPro?proId="+id).then(res=>{
+                        alert(res.data)
+                        this.showAllPro()
+                    }).catch(e=>{
+                        alert(res.data)
+                    })
+                }
+            },
+            mounted(){
+                // location.search.split("=")[1]
+                this.showAllPro();
+            }
+        })
+
+    </script>
+
+    </body>
+</html>
